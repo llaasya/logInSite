@@ -1,0 +1,51 @@
+
+<mat-toolbar color="primary">
+    Enter Login Credentials
+    <span class="flex-spacer"></span>
+    
+  </mat-toolbar>
+  <div class="form-size">
+  <!-- <p>{{ currentUser | json }}</p> -->
+  <form novalidate [formGroup]="loginForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+    <mat-dialog-content>
+    <p>
+      <mat-form-field >
+     <input matInput formControlName="username" placeholder="User Name" type="text">
+     <mat-error *ngIf="formErrors.username">{{formErrors.username}}</mat-error>
+      </mat-form-field>
+      </p>
+      <p>
+      <mat-form-field >
+     <input matInput formControlName="password" placeholder="Password" type="password" >
+     <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button class="mat-raised-button mat-primary button-size" [disabled]="loginForm.invalid" routerLink="/newUser">Submit</button>
+  </mat-dialog-actions>  
+  </form>
+    </div>
+  
+  <!-- <form novalidate  #loginForm="ngForm" (ngSubmit)="onSubmit()">
+  
+    <mat-dialog-content>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Username" type="text"  name="username" required>
+          <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password" type="password"  name="password"  required>
+          <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+        </mat-form-field>
+        <mat-checkbox [(ngModel)]="user.remember" name="remember">Remember Me</mat-checkbox> 
+      </p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <span class="flex-spacer"></span>
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="loginForm.form.invalid">Login</button>
+    </mat-dialog-actions>
+  </form> -->
+  

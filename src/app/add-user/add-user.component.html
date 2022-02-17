@@ -1,0 +1,58 @@
+
+  <div class="toolbar">  
+    <font style="color:white">Enter New User Details </font>
+  </div>
+ 
+  <!-- <p>{{ currentUser | json }}</p> -->
+  <div class="form-size">
+  <form novalidate [formGroup]="newUserForm" #fform="ngForm" (ngSubmit)="onSubmit()" >
+    <mat-dialog-content>
+     <p>
+      <mat-form-field >
+     <input matInput formControlName="firstname" placeholder="First Name" type="text">
+     <mat-error *ngIf="formErrors.firstname">{{formErrors.firstname}}</mat-error>
+      </mat-form-field>
+      </p>  
+      <p>
+        <mat-form-field >
+       <input matInput formControlName="lastname" placeholder="Last Name" type="text">
+       <mat-error *ngIf="formErrors.lastname">{{formErrors.lastname}}</mat-error>
+        </mat-form-field>
+        </p> 
+    <p>
+      <mat-form-field >
+     <input matInput formControlName="username" placeholder="User Name" type="text">
+     <mat-error *ngIf="formErrors.username">{{formErrors.username}}</mat-error>
+      </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field >
+       <input matInput formControlName="email" placeholder="Email ID" type="text">
+       <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+        </mat-form-field>
+        </p>
+      <p>
+      <mat-form-field>
+     <input matInput formControlName="password" placeholder="Password" type="password" >
+     <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
+      </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+       <input matInput formControlName="cnfpassword" placeholder="Confirm Password" type="password" >
+       <mat-error *ngIf="formErrors.confirmPassword">{{formErrors.confirmPassword}}</mat-error>
+        </mat-form-field>
+      </p>
+
+      <mat-select placeholder="Role" formControlName="role">
+        <mat-option *ngFor="let rtype of roleType" [value]="rtype">
+          {{ rtype }}
+        </mat-option>
+      </mat-select>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+
+    <button type="submit" class="mat-raised-button mat-primary button-size" [disabled]="newUserForm.invalid">ADD USER</button>
+  </mat-dialog-actions>
+  </form>
+    </div>

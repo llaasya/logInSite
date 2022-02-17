@@ -1,0 +1,26 @@
+.full-width {
+    width: 95%
+}
+
+.half-width {
+    width: 35%
+}
+
+.form-size {
+    // justify-content: center;
+    // align-items: center;
+    height: 300px;
+    position:absolute;
+    left: 50%;
+    top:50%;
+    padding:50px;
+    transform: translate(-50%,-50%);
+    border-style:outset;
+    border-width: 2px;
+    border-color: palevioletred;
+}
+
+.button-size
+{
+    padding:10px 20px;
+}

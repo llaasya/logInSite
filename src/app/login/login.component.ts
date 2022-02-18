@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import {Router } from '@angular/router';
-import { User,Role } from '../shared/user';
+import { User,Role} from '../shared/user';
+import { NewUser } from '../shared/newUser';
+// import { HttpClient } from '@angular/common/http';
+import userdata from '../../assets/json/userdata.json';
+import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +13,12 @@ import { User,Role } from '../shared/user';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  // userData:any;
+  public userList: {firstname:string, lastname:string,username:string,password:string,email:string,role:string}[]=userdata;
   loginForm!: FormGroup;
   currentUser!: User;
   currentRole = Role;
-
+  valid!: boolean;
   @ViewChild('fform') loginFormDirective: any;
 
   formErrors:any = {
@@ -35,11 +41,16 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private route:Router ) { 
     this.createForm();
+    // this.http.get('assets/json/userdata.json').subscribe((res)=>{
+    //   this.userData=res;
+    //   console.log('...result ::',this.userData);
+    // });
   }
 
   ngOnInit(): void {
   }
   createForm() {
+    this.valid=true;
     this.loginForm = this.fb.group({
       username:['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       password:['', [Validators.required, Validators.minLength(6), Validators.maxLength(25)]],
@@ -76,6 +87,32 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.currentUser = this.loginForm.value;
+    for( const attr in this.userList)
+    {
+      console.log(this.userList[attr]);
+      const control=this.userList
+      if(this.userList[attr].username == this.currentUser.username)
+      {
+        if(this.userList[attr].password == this.currentUser.password)
+        {
+          if(this.userList[attr].role=="admin")
+          {
+         console.log("VALID DATA and ADMIN");
+         this.route.navigate(['newUser']);
+        }
+        else
+        {
+          console.log("VALID DATA and USER");
+         this.route.navigateByUrl("www.google.co.in/");
+        }
+      }
+      else
+      {
+        this.valid=false;
+      }
+    }
+  }
+
     console.log(this.currentUser);
     this.loginForm.reset();
   }

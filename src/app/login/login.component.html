@@ -22,9 +22,24 @@
     </p>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button class="mat-raised-button mat-primary button-size" [disabled]="loginForm.invalid" routerLink="/newUser">Submit</button>
+    <button mat-button class="mat-raised-button mat-primary button-size" [disabled]="loginForm.invalid" >Submit</button>
   </mat-dialog-actions>  
   </form>
+    </div>
+
+    <div style="text-align: left">
+      <h2>
+        USER DATA 
+      </h2>
+    <ul *ngFor="let item of userList">
+    <li>
+        Username: {{item.username}}, Password:{{item.password}},Role:{{item.role}}
+    </li>
+    </ul>
+    </div>
+
+    <div [hidden]="valid">
+      <h1>Invalid</h1>
     </div>
   
   <!-- <form novalidate  #loginForm="ngForm" (ngSubmit)="onSubmit()">

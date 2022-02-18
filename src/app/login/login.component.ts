@@ -3,9 +3,7 @@ import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import {Router } from '@angular/router';
 import { User,Role} from '../shared/user';
 import { NewUser } from '../shared/newUser';
-// import { HttpClient } from '@angular/common/http';
 import userdata from '../../assets/json/userdata.json';
-import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 
 @Component({
   selector: 'app-login',

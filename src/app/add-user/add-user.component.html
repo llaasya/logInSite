@@ -43,16 +43,17 @@
        <mat-error *ngIf="formErrors.confirmPassword">{{formErrors.confirmPassword}}</mat-error>
         </mat-form-field>
       </p>
-
+      <p>
+<mat-form-field>
       <mat-select placeholder="Role" formControlName="role">
-        <mat-option *ngFor="let rtype of roleType" [value]="rtype">
-          {{ rtype }}
-        </mat-option>
+        <mat-option value="admin">Admin</mat-option>
+        <mat-option value="user">User</mat-option>
       </mat-select>
+    </mat-form-field>
+  </p>
     </mat-dialog-content>
     <mat-dialog-actions>
-
-    <button type="submit" class="mat-raised-button mat-primary button-size" [disabled]="newUserForm.invalid">ADD USER</button>
+    <button type="submit" class="mat-raised-button mat-primary button-size" [disabled]="newUserForm.invalid"  >ADD USER</button>
   </mat-dialog-actions>
   </form>
     </div>

@@ -7,4 +7,3 @@ export class NewUser {
     role!: string;
 };
 
-export const Role = ['Admin', 'User'];

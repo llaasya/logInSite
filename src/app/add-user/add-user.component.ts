@@ -1,16 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
-import { NewUser,Role } from '../shared/newUser';
+import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
+  template:`<app-disp-users> [newUserDet]="currentUser"</app-disp-users>`,
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
   newUserForm!: FormGroup;
-  currentUser!: NewUser;
-  roleType = Role;
+  currentUser!: any;
 
   @ViewChild('fform') newUserFormDirective: any;
 
@@ -20,8 +21,7 @@ export class AddUserComponent implements OnInit {
     'username' : '',
     'email' : '',
     'password' : '',
-    'cnfpassword' : '',
-
+    'cnfpassword' : ''
   };
 
   validationMessages:any = {
@@ -50,7 +50,7 @@ export class AddUserComponent implements OnInit {
   
   };
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private route:Router) { 
     this.createForm();
   }
 
@@ -63,7 +63,8 @@ export class AddUserComponent implements OnInit {
       username:['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       email:['', [Validators.required, Validators.email]],
       password:['', [Validators.required, Validators.minLength(6)]],
-      cnfpassword: ['',Validators.required]
+      cnfpassword: ['',Validators.required],
+      role:''
     }
     );
     this.newUserForm.valueChanges
@@ -93,6 +94,7 @@ onValueChanged(data?: any) {
 onSubmit() {
   this.currentUser = this.newUserForm.value;
   console.log(this.currentUser);
+  this.route.navigate(['dispUser'])
   this.newUserForm.reset();
 }
 }

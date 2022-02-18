@@ -18,12 +18,15 @@ import { MatDialogModule } from '@angular/material';
 import 'hammerjs';
 import { LoginComponent } from './login/login.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DispUsersComponent } from './disp-users/disp-users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AddUserComponent
+    AddUserComponent,
+    DispUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,10 @@ import { AddUserComponent } from './add-user/add-user.component';
     ReactiveFormsModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatDialogModule,MatFormFieldModule,MatInputModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

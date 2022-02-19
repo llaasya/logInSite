@@ -9,7 +9,7 @@
         <th>Role</th>
     </thead>
     <tbody>
-        <tr *ngFor="let user of userList">
+        <tr *ngFor="let user of data.userList">
             <td>{{user.firstname}}</td>
             <td>{{user.lastname}}</td>
             <td>{{user.username}}</td>
@@ -19,4 +19,7 @@
     </tbody>
     
 </table>
+</div>
+<div>
+    <button routerLink="/login">Login</button>
 </div>

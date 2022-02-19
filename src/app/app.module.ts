@@ -20,13 +20,16 @@ import { LoginComponent } from './login/login.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DispUsersComponent } from './disp-users/disp-users.component';
+import { DataService } from './services/data.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AddUserComponent,
-    DispUsersComponent
+    DispUsersComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,7 @@ import { DispUsersComponent } from './disp-users/disp-users.component';
     MatInputModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

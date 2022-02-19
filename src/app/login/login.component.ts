@@ -4,6 +4,7 @@ import {Router } from '@angular/router';
 import { User,Role} from '../shared/user';
 import { NewUser } from '../shared/newUser';
 import userdata from '../../assets/json/userdata.json';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,6 @@ import userdata from '../../assets/json/userdata.json';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  // userData:any;
   public userList: {firstname:string, lastname:string,username:string,password:string,email:string,role:string}[]=userdata;
   loginForm!: FormGroup;
   currentUser!: User;
@@ -37,12 +37,10 @@ export class LoginComponent implements OnInit {
   
   };
 
-  constructor(private fb: FormBuilder, private route:Router ) { 
+  constructor(private fb: FormBuilder, private route:Router, private dataService:DataService ) { 
     this.createForm();
-    // this.http.get('assets/json/userdata.json').subscribe((res)=>{
-    //   this.userData=res;
-    //   console.log('...result ::',this.userData);
-    // });
+    this.dataService.setOption('userList', this.userList);
+    console.log(this.userList);
   }
 
   ngOnInit(): void {

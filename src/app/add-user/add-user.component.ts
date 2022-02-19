@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-add-user',
-  template:`<app-disp-users> [newUserDet]="currentUser"</app-disp-users>`,
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.scss']
 })
@@ -50,8 +50,9 @@ export class AddUserComponent implements OnInit {
   
   };
 
-  constructor(private fb: FormBuilder, private route:Router) { 
+  constructor(private fb: FormBuilder, private route:Router , private dataService:DataService) { 
     this.createForm();
+   
   }
 
   ngOnInit(): void {
@@ -94,6 +95,12 @@ onValueChanged(data?: any) {
 onSubmit() {
   this.currentUser = this.newUserForm.value;
   console.log(this.currentUser);
+  this.dataService.setOption('firstname', this.currentUser.firstname);
+  this.dataService.setOption('lastname', this.currentUser.lastname);
+  this.dataService.setOption('username', this.currentUser.username);
+  this.dataService.setOption('password', this.currentUser.password);
+  this.dataService.setOption('email', this.currentUser.email);
+  this.dataService.setOption('role', this.currentUser.role);
   this.route.navigate(['dispUser'])
   this.newUserForm.reset();
 }

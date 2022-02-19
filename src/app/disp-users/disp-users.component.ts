@@ -13,7 +13,14 @@ export class DispUsersComponent implements OnInit {
 
   constructor(private dataService: DataService) { 
     this.data=dataService.getOption();
-    this.data.userList.push(this.data);  
+    // this.newUser.firstname=this.data.firstname;
+    // this.newUser.lastname=this.data.lastname;
+    // this.newUser.username=this.data.username;
+    // this.newUser.email=this.data.email;
+    // this.newUser.password=this.data.password;
+    // this.newUser.role=this.data.role;
+    this.data.userList.push({'firstname':this.data.firstname,'lastname':this.data.lastname,'username':this.data.username,
+    'password':this.data.password,'email':this.data.email,'role':this.data.role,});  
     dataService.setOption('userList', this.data.userList);
     console.log(this.data.userList);
   }

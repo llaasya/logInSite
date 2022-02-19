@@ -12,7 +12,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  public userList: {firstname:string, lastname:string,username:string,password:string,email:string,role:string}[]=userdata;
+  public userList:{firstname:string,lastname:string,username:string,password:string,email:string,role:string}[]=userdata;
   loginForm!: FormGroup;
   currentUser!: User;
   currentRole = Role;
@@ -102,11 +102,12 @@ export class LoginComponent implements OnInit {
          this.route.navigateByUrl("www.google.co.in/");
         }
       }
+    }
       else
       {
         this.valid=false;
       }
-    }
+    
   }
 
     console.log(this.currentUser);

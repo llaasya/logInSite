@@ -9,7 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-
+import { MatGridListModule } from '@angular/material';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -21,7 +21,6 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DispUsersComponent } from './disp-users/disp-users.component';
 import { DataService } from './services/data.service';
-import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     AddUserComponent,
     DispUsersComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +40,8 @@ import { HomeComponent } from './home/home.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -1,23 +1,43 @@
 <h1>User Details</h1>
-<div class="container">
+<div class="list">
 <table>
     <thead>
-        <th>First Name</th>
+            <th>First Name</th>
         <th>Last Name</th>
         <th>User Name</th>
+        <th>View Details</th>    
     </thead>
     <tbody>
         <tr *ngFor="let user of data.userList">
             <td>{{user.firstname}}</td>
             <td>{{user.lastname}}</td>
             <td>{{user.username}}</td>
-            <td><button [routerLink]="['/viewDet',user.username]">View Details</button></td>
+            <td><button (click)="setSelectedUser(user.username)" style="padding:10px">Info</button></td>
         </tr>
     </tbody>
     
 </table>
 </div>
 <div>
-    <button routerLink="/login">Login</button>
+    <button routerLink="/login">LogOff</button>
+    <button routerLink="/newUser">Add Another User</button>
+</div>
+<div [hidden]="detailsSection" class="details">
+    <table>
+        <thead>
+            <th style="color: indigo; font-size: 20px; font-style: bold;">USER DETAILS
+            </th>
+        </thead>
+        <tbody>
+            <td>
+                <p><b>First Name :</b> {{selectedUser.firstname}}</p>
+                <p><b>Last Name :</b> {{selectedUser.lastname}}</p>
+                <p><b>User Name :</b> {{selectedUser.username}}</p>
+                <p><b>Email :</b> {{selectedUser.email}}</p>
+                <p><b>Password :</b> {{selectedUser.password}}</p>
+                <p><b>Role :</b> {{selectedUser.role}}</p>
+            </td>
+        </tbody>
+    </table>   
 </div>
 

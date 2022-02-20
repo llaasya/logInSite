@@ -10,19 +10,32 @@ import { NewUser } from '../shared/newUser';
 })
 export class DispUsersComponent implements OnInit {
   public data: any;
+  selectedUser!:any;
+  detailsSection!:boolean;
 
   constructor(private dataService: DataService) { 
+    this.detailsSection=true;
     this.data=dataService.getOption();
-    // this.newUser.firstname=this.data.firstname;
-    // this.newUser.lastname=this.data.lastname;
-    // this.newUser.username=this.data.username;
-    // this.newUser.email=this.data.email;
-    // this.newUser.password=this.data.password;
-    // this.newUser.role=this.data.role;
-    this.data.userList.push({'firstname':this.data.firstname,'lastname':this.data.lastname,'username':this.data.username,
-    'password':this.data.password,'email':this.data.email,'role':this.data.role,});  
+    this.selectedUser={'firstname':this.data.firstname,'lastname':this.data.lastname,'username':this.data.username,
+    'password':this.data.password,'email':this.data.email,'role':this.data.role,};
+    this.data.userList.push(this.selectedUser);  
+
     dataService.setOption('userList', this.data.userList);
+
     console.log(this.data.userList);
+  }
+  
+  public setSelectedUser(userName:string)
+  {
+    for(const attr in this.data.userList)
+    {
+      if(this.data.userList[attr].username == userName)
+      {
+        this.detailsSection=false;
+        this.selectedUser= this.data.userList[attr];
+        console.log(this.selectedUser);
+      }
+    }
   }
 
   ngOnInit(): void { 

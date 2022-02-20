@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
     for( const attr in this.userList)
     {
       console.log(this.userList[attr]);
-      const control=this.userList
+      // const control=this.userList
       if(this.userList[attr].username == this.currentUser.username)
       {
         if(this.userList[attr].password == this.currentUser.password)

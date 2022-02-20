@@ -99,7 +99,7 @@ export class LoginComponent implements OnInit {
         else
         {
           console.log("VALID DATA and USER");
-         this.route.navigateByUrl("www.google.co.in/");
+         this.route.navigate(['info']);
         }
       }
     }

@@ -14,13 +14,13 @@ import { MatGridListModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material';
-
 import 'hammerjs';
 import { LoginComponent } from './login/login.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DispUsersComponent } from './disp-users/disp-users.component';
 import { DataService } from './services/data.service';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +28,7 @@ import { DataService } from './services/data.service';
     LoginComponent,
     AddUserComponent,
     DispUsersComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,

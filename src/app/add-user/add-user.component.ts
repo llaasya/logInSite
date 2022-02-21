@@ -21,7 +21,6 @@ export class AddUserComponent implements OnInit {
     'username' : '',
     'email' : '',
     'password' : '',
-    'cnfpassword' : ''
   };
 
   validationMessages:any = {
@@ -43,10 +42,6 @@ export class AddUserComponent implements OnInit {
       'required':      'Password is required.',
       'minlength':     'Password must be at least 6 characters long.'
     },
-    'cnfpassword': {
-      'required':      'Confirm Password is required.',
-      'match':     'Passwords must match'
-    }
   
   };
 
@@ -64,7 +59,6 @@ export class AddUserComponent implements OnInit {
       username:['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       email:['', [Validators.required, Validators.email]],
       password:['', [Validators.required, Validators.minLength(6)]],
-      cnfpassword: ['',Validators.required],
       role:''
     }
     );
@@ -92,6 +86,7 @@ onValueChanged(data?: any) {
     }
   }
 }
+
 onSubmit() {
   this.currentUser = this.newUserForm.value;
   console.log(this.currentUser);

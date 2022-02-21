@@ -1,14 +1,16 @@
 
   <div class="toolbar">  
-    <font style="color:white">Enter New User Details </font>
+    <font style="color:white;font-size: 20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">- - - - - - Register New User - - - - - -</font>
   </div>
- 
+  <div style="display:flex;justify-content: right;"> 
+    <button mat-button class="mat-raised-button mat-primary actions" routerLink="/login" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">LogOff</button>    
+</div>
   <!-- <p>{{ currentUser | json }}</p> -->
   <div class="form-size">
   <form novalidate [formGroup]="newUserForm" #fform="ngForm" (ngSubmit)="onSubmit()" >
     <mat-dialog-content>
      <p>
-      <mat-form-field >
+      <mat-form-field>
      <input matInput formControlName="firstname" placeholder="First Name" type="text">
      <mat-error *ngIf="formErrors.firstname">{{formErrors.firstname}}</mat-error>
       </mat-form-field>
@@ -37,12 +39,6 @@
      <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
       </mat-form-field>
     </p>
-    <p>
-        <mat-form-field>
-       <input matInput formControlName="cnfpassword" placeholder="Confirm Password" type="password" >
-       <mat-error *ngIf="formErrors.confirmPassword">{{formErrors.confirmPassword}}</mat-error>
-        </mat-form-field>
-      </p>
       <p>
 <mat-form-field>
       <mat-select placeholder="Role" formControlName="role">

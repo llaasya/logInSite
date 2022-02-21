@@ -1,33 +1,40 @@
-.list{
-  position:absolute;
-  left: 5%;
-  top:20%;
+.tableview{
+  margin:30px 30px;
   padding:20px;
-    border: 5px solid purple;
-    border-collapse: collapse;
+  border: 5px solid purple;
   }
 
   th{
     border: 1px solid purple;
     border-collapse: collapse;
     padding: 20px;
-font-family:Verdana,serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
+
   td{
     border: 1px solid grey;
     border-collapse: collapse;
     padding: 20px;
-font-family:Verdana,serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
   }
+
 p{
-font-family:Verdana,serif;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.details{
-  position:absolute;
-  left: 60%;
-  top:20%;
-padding:20px;
-border: 5px solid purple;
-border-collapse: collapse;
+
+.toolbar{
+  display:flex;
+  align-items: center;
+  background-color: purple;
+  height: 50px;
+  justify-content: center;
+}
+
+.actions
+{
+  padding:10px 20px;
+  margin:10px 20px;
+
 }

@@ -22,6 +22,8 @@ import { DispUsersComponent } from './disp-users/disp-users.component';
 import { DataService } from './services/data.service';
 import { InfoComponent } from './info/info.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,7 @@ import { InfoComponent } from './info/info.component';
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

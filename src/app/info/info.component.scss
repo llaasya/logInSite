@@ -1,0 +1,26 @@
+.piechart
+{
+    width:600px;
+    position:absolute;
+    left: 50%;
+    top:50%;
+    padding:50px;
+    transform: translate(-50%,-50%);
+    border-style:outset;
+    border-width: 2px;
+    border-color: palevioletred;
+}
+.toolbar{
+    display:flex;
+    align-items: center;
+    background-color: purple;
+    height: 50px;
+    justify-content: center;
+}
+
+.actions
+{
+  padding:10px 20px;
+  margin:10px 20px;
+
+}

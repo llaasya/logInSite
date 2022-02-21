@@ -1,13 +1,9 @@
-.full-width {
-    width: 95%
-}
-
-.half-width {
-    width: 35%
-}
-
 .form-size {
+    display:flex;
+    // align-items: center;
     margin-top:150px;
+    width:300px;
+    justify-content: center;
     position:absolute;
     left: 50%;
     top:50%;
@@ -28,4 +24,11 @@
 .button-size
 {
     padding:10px 20px;
+}
+
+.actions
+{
+  padding:10px 20px;
+  margin:10px 20px;
+
 }

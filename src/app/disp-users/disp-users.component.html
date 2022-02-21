@@ -1,6 +1,13 @@
-<h1>User Details</h1>
-<div class="list">
-<table>
+<div class="toolbar">  
+    <font style="color:white;font-size: 20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">- - - - - - LIST OF USERS - - - - - -</font>
+ 
+</div>
+<div style="display:flex;justify-content: right;"> 
+    <button mat-button class="mat-raised-button mat-primary actions" routerLink="/newUser" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Add Another User</button> 
+    <button mat-button class="mat-raised-button mat-primary actions" routerLink="/login" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">LogOff</button>    
+</div>
+<div style="display:grid;">
+<table  class="tableview">
     <thead>
             <th>First Name</th>
         <th>Last Name</th>
@@ -12,18 +19,12 @@
             <td>{{user.firstname}}</td>
             <td>{{user.lastname}}</td>
             <td>{{user.username}}</td>
-            <td><button (click)="setSelectedUser(user.username)" style="padding:10px 50px">Info</button></td>
+            <td><button class="mat-raised-button mat-primary" (click)="setSelectedUser(user.username)" style="padding:10px 50px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">DETAILS</button></td>
         </tr>
     </tbody>
     
 </table>
-</div>
-<div>
-    <button routerLink="/login">LogOff</button>
-    <button routerLink="/newUser">Add Another User</button>
-</div>
-<div [hidden]="detailsSection" class="details">
-    <table>
+    <table  [hidden]="detailsSection" class="tableview">
         <thead>
             <th style="color: indigo; font-size: 20px; font-style: bold;">USER DETAILS
             </th>
@@ -39,5 +40,7 @@
             </td>
         </tbody>
     </table>   
+
 </div>
+
 

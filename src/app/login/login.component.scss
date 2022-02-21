@@ -24,3 +24,11 @@
 {
     padding:10px 20px;
 }
+
+.toolbar{
+    display:flex;
+    align-items: center;
+    background-color: purple;
+    height: 50px;
+    justify-content: center;
+}

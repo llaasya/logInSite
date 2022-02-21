@@ -12,6 +12,7 @@ import { DataService } from '../services/data.service';
 export class AddUserComponent implements OnInit {
   newUserForm!: FormGroup;
   currentUser!: any;
+  matchMessage!:string;
 
   @ViewChild('fform') newUserFormDirective: any;
 
@@ -42,6 +43,10 @@ export class AddUserComponent implements OnInit {
       'required':      'Password is required.',
       'minlength':     'Password must be at least 6 characters long.'
     },
+    'cnfpassword': {
+      'required':      'Password is required.',
+      'match':     'Password must match'
+    },
   
   };
 
@@ -58,7 +63,8 @@ export class AddUserComponent implements OnInit {
       lastname:['', [Validators.required]],
       username:['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       email:['', [Validators.required, Validators.email]],
-      password:['', [Validators.required, Validators.minLength(6)]],
+      password:[null, [Validators.required, Validators.minLength(6)]],
+      cnfpassword:[null, [Validators.required, Validators.minLength(6)]],
       role:''
     }
     );
@@ -66,6 +72,7 @@ export class AddUserComponent implements OnInit {
     .subscribe(data => this.onValueChanged(data));
 
     this.onValueChanged();
+
 }
 onValueChanged(data?: any) {
   if (!this.newUserForm) { return; }
@@ -84,6 +91,21 @@ onValueChanged(data?: any) {
         }
       }
     }
+  }
+}
+cnfValidator(password:string,cnfpassword:string)
+{
+  console.log(password,cnfpassword);
+  this.formErrors[cnfpassword]='';
+  if(password === cnfpassword)
+  {
+    console.log("Passowrds Match");
+    this.matchMessage="Passwords Match";
+  }
+  else
+  {
+    console.log("Passwords Dont Match");
+    this.matchMessage="Passwords Don't Match";
   }
 }
 

@@ -39,9 +39,18 @@
      <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
       </mat-form-field>
     </p>
+    <p>
+      <mat-form-field>
+     <input matInput formControlName="cnfpassword" placeholder="Confirm Password" type="password" >
+     <mat-error *ngIf="formErrors.cnfpassword">{{formErrors.cnfpassword}}</mat-error>
+     
+      </mat-form-field>
+      <button type="button" (click)="cnfValidator(newUserForm.controls['password'].value,newUserForm.controls['cnfpassword'].value)"> Check</button>
+    </p>
+    <p style="color:red">{{matchMessage}}</p>
       <p>
 <mat-form-field>
-      <mat-select placeholder="Role" formControlName="role">
+      <mat-select placeholder="Role" formControlName="role" >
         <mat-option value="admin">Admin</mat-option>
         <mat-option value="user">User</mat-option>
       </mat-select>
@@ -49,7 +58,7 @@
   </p>
     </mat-dialog-content>
     <mat-dialog-actions>
-    <button type="submit" class="mat-raised-button mat-primary button-size" [disabled]="newUserForm.invalid"  >ADD USER</button>
+    <button type="submit" class="mat-raised-button mat-primary button-size" [disabled]="newUserForm.invalid" >ADD USER</button>
   </mat-dialog-actions>
   </form>
     </div>

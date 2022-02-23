@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DispUsersComponent } from './disp-users/disp-users.component';
 import { DataService } from './services/data.service';
 import { InfoComponent } from './info/info.component';
+import { MatIconModule } from '@angular/material';
 
 
 
@@ -45,6 +46,7 @@ import { InfoComponent } from './info/info.component';
     MatInputModule,
     HttpClientModule,
     MatGridListModule,
+    MatIconModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -3,6 +3,8 @@ import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { MatIconRegistry } from '@angular/material';
+
 
 @Component({
   selector: 'app-add-user',
@@ -13,6 +15,7 @@ export class AddUserComponent implements OnInit {
   newUserForm!: FormGroup;
   currentUser!: any;
   matchMessage!:string;
+  nomatch!:boolean;
 
   @ViewChild('fform') newUserFormDirective: any;
 
@@ -37,7 +40,8 @@ export class AddUserComponent implements OnInit {
       'maxlength':     'User Name cannot be more than 25 characters long.'
     },
     'email':{
-      'required': 'Email is required.'
+      'required': 'Email is required.',
+      'email': 'Email not valid'
     },
     'password': {
       'required':      'Password is required.',
@@ -45,6 +49,7 @@ export class AddUserComponent implements OnInit {
     },
     'cnfpassword': {
       'required':      'Password is required.',
+      'minlength':     'Password must be at least 6 characters long.',
       'match':     'Password must match'
     },
   
@@ -58,23 +63,30 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
   }
   createForm() {
+    this.nomatch=true;
     this.newUserForm = this.fb.group({
       firstname:['', [Validators.required]],
       lastname:['', [Validators.required]],
       username:['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       email:['', [Validators.required, Validators.email]],
-      password:[null, [Validators.required, Validators.minLength(6)]],
-      cnfpassword:[null, [Validators.required, Validators.minLength(6)]],
+      password:['', [Validators.required, Validators.minLength(6)]],
+      cnfpassword:['', [Validators.required, Validators.minLength(6)]],
       role:''
     }
     );
     this.newUserForm.valueChanges
     .subscribe(data => this.onValueChanged(data));
 
-    this.onValueChanged();
+    // this.onValueChanged();
+    // if(this.newUserForm.controls.cnfpassword.valueChanges)
+    // {
+    //   this.cnfValidator(this.newUserForm.value.password,this.newUserForm.value.cnfpassword);
+    // }
 
 }
 onValueChanged(data?: any) {
+  this.nomatch=true;
+  this.matchMessage='';
   if (!this.newUserForm) { return; }
   const form = this.newUserForm;
   for (const field in this.formErrors) {
@@ -93,19 +105,20 @@ onValueChanged(data?: any) {
     }
   }
 }
-cnfValidator(password:string,cnfpassword:string)
+public cnfValidator(password:string,cnfpassword:string)
 {
   console.log(password,cnfpassword);
-  this.formErrors[cnfpassword]='';
   if(password === cnfpassword)
   {
     console.log("Passowrds Match");
-    this.matchMessage="Passwords Match";
+
+    this.nomatch=false;
   }
   else
   {
     console.log("Passwords Dont Match");
     this.matchMessage="Passwords Don't Match";
+    this.nomatch=true;
   }
 }
 

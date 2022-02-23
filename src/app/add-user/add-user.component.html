@@ -43,13 +43,15 @@
       <mat-form-field>
      <input matInput formControlName="cnfpassword" placeholder="Confirm Password" type="password" >
      <mat-error *ngIf="formErrors.cnfpassword">{{formErrors.cnfpassword}}</mat-error>
-     
-      </mat-form-field>
-      <button type="button" (click)="cnfValidator(newUserForm.controls['password'].value,newUserForm.controls['cnfpassword'].value)"> Check</button>
+      </mat-form-field> 
+      <mat-icon aria-label="tick mark" *ngIf="!nomatch" style="padding:5px">done</mat-icon>
+      <button type="button" (click)="cnfValidator(newUserForm.controls['password'].value,newUserForm.controls['cnfpassword'].value)" style="color:white;padding:5px 10px; background-color:crimson;"> Check</button> 
+      
+     <font style="color:red" *ngIf="nomatch">{{matchMessage}}</font>
     </p>
-    <p style="color:red">{{matchMessage}}</p>
-      <p>
+<p>     
 <mat-form-field>
+
       <mat-select placeholder="Role" formControlName="role" >
         <mat-option value="admin">Admin</mat-option>
         <mat-option value="user">User</mat-option>
@@ -58,7 +60,7 @@
   </p>
     </mat-dialog-content>
     <mat-dialog-actions>
-    <button type="submit" class="mat-raised-button mat-primary button-size" [disabled]="newUserForm.invalid" >ADD USER</button>
+    <button type="submit" class="mat-raised-button mat-primary button-size" [disabled]="newUserForm.invalid || nomatch" >ADD USER</button>
   </mat-dialog-actions>
   </form>
     </div>

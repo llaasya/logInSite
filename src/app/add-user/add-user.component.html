@@ -7,7 +7,7 @@
 </div>
   <!-- <p>{{ currentUser | json }}</p> -->
   <div class="form-size">
-  <form novalidate [formGroup]="newUserForm" #fform="ngForm" (ngSubmit)="onSubmit()" >
+  <form novalidate [formGroup]="newUserForm" (ngSubmit)="onSubmit()" >
     <mat-dialog-content>
      <p>
       <mat-form-field>
@@ -45,9 +45,9 @@
      <mat-error *ngIf="formErrors.cnfpassword">{{formErrors.cnfpassword}}</mat-error>
       </mat-form-field> 
       <mat-icon aria-label="tick mark" *ngIf="!nomatch" style="padding:5px">done</mat-icon>
-      <button type="button" (click)="cnfValidator(newUserForm.controls['password'].value,newUserForm.controls['cnfpassword'].value)" style="color:white;padding:5px 10px; background-color:crimson;"> Check</button> 
+      <button style="margin-left:10px ;" type="button" (click)="cnfValidator(newUserForm.controls['password'].value,newUserForm.controls['cnfpassword'].value)" style="color:white;padding:5px 10px; background-color:crimson;"> Check</button> 
       
-     <font style="color:red" *ngIf="nomatch">{{matchMessage}}</font>
+     <font style="color:red;font-size:13px" *ngIf="nomatch">{{matchMessage}}</font>
     </p>
 <p>     
 <mat-form-field>
@@ -60,6 +60,8 @@
   </p>
     </mat-dialog-content>
     <mat-dialog-actions>
+    <font style="color:red;font-size:12px" *ngIf="nomatch">*Check for passwords</font>
+    <br>
     <button type="submit" class="mat-raised-button mat-primary button-size" [disabled]="newUserForm.invalid || nomatch" >ADD USER</button>
   </mat-dialog-actions>
   </form>

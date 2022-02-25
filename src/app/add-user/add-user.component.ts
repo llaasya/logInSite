@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
-import { LoginComponent } from '../login/login.component';
+// import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { MatIconRegistry } from '@angular/material';
@@ -17,7 +17,6 @@ export class AddUserComponent implements OnInit {
   matchMessage!:string;
   nomatch!:boolean;
 
-  @ViewChild('fform') newUserFormDirective: any;
 
   formErrors:any = {
     'firstname' : '',
@@ -70,18 +69,12 @@ export class AddUserComponent implements OnInit {
       username:['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       email:['', [Validators.required, Validators.email]],
       password:['', [Validators.required, Validators.minLength(6)]],
-      cnfpassword:['', [Validators.required, Validators.minLength(6)]],
+      cnfpassword:[null, [Validators.required, Validators.minLength(6)]],
       role:''
     }
     );
     this.newUserForm.valueChanges
     .subscribe(data => this.onValueChanged(data));
-
-    // this.onValueChanged();
-    // if(this.newUserForm.controls.cnfpassword.valueChanges)
-    // {
-    //   this.cnfValidator(this.newUserForm.value.password,this.newUserForm.value.cnfpassword);
-    // }
 
 }
 onValueChanged(data?: any) {

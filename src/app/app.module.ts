@@ -22,6 +22,7 @@ import { DispUsersComponent } from './disp-users/disp-users.component';
 import { DataService } from './services/data.service';
 import { InfoComponent } from './info/info.component';
 import { MatIconModule } from '@angular/material';
+import { AuthguardService } from './services/authguard.service';
 
 
 
@@ -48,7 +49,7 @@ import { MatIconModule } from '@angular/material';
     MatGridListModule,
     MatIconModule
   ],
-  providers: [DataService],
+  providers: [DataService,AuthguardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

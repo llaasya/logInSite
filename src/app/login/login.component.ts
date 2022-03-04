@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   public userList:{firstname:string,lastname:string,username:string,password:string,email:string,role:string}[]=userdata;
   loginForm!: FormGroup;
   currentUser!: User;
-  currentRole = Role;
   valid!: boolean;
+  // permission!:string;
   @ViewChild('fform') loginFormDirective: any;
 
   formErrors:any = {
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private route:Router, private dataService:DataService ) { 
     this.createForm();
     this.dataService.setOption('userList', this.userList);
+    
     console.log(this.userList);
   }
 
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
   }
   createForm() {
     this.valid=true;
+    // this.permission="";
     this.loginForm = this.fb.group({
       username:['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       password:['', [Validators.required, Validators.minLength(6), Validators.maxLength(25)]],
@@ -86,18 +88,19 @@ export class LoginComponent implements OnInit {
     for( const attr in this.userList)
     {
       console.log(this.userList[attr]);
-      // const control=this.userList
       if(this.userList[attr].username == this.currentUser.username)
       {
         if(this.userList[attr].password == this.currentUser.password)
         {
           if(this.userList[attr].role=="admin")
           {
+            this.dataService.setOption('isLoggedIn',"admin");
          console.log("VALID DATA and ADMIN");
          this.route.navigate(['newUser']);
         }
         else
         {
+          this.dataService.setOption('isLoggedIn',"user");
           console.log("VALID DATA and USER");
          this.route.navigate(['info']);
         }

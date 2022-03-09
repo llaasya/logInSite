@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import userdata from '../../assets/json/userdata.json';
 import { DataService } from '../services/data.service';
-import { NewUser } from '../shared/newUser';
+
 
 @Component({
   selector: 'app-disp-users',

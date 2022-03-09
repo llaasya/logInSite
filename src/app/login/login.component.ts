@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   currentUser!: User;
   valid!: boolean;
-  // permission!:string;
+
   @ViewChild('fform') loginFormDirective: any;
 
   formErrors:any = {
@@ -88,24 +88,18 @@ export class LoginComponent implements OnInit {
     for( const attr in this.userList)
     {
       console.log(this.userList[attr]);
-      if(this.userList[attr].username == this.currentUser.username)
-      {
-        if(this.userList[attr].password == this.currentUser.password)
-        {
-          if(this.userList[attr].role=="admin")
+      if(this.userList[attr].username == this.currentUser.username && this.userList[attr].password == this.currentUser.password && this.userList[attr].role=="admin")
           {
             this.dataService.setOption('isLoggedIn',"admin");
          console.log("VALID DATA and ADMIN");
          this.route.navigate(['newUser']);
         }
-        else
+        else if (this.userList[attr].username == this.currentUser.username && this.userList[attr].password == this.currentUser.password && this.userList[attr].role=="user")
         {
           this.dataService.setOption('isLoggedIn',"user");
           console.log("VALID DATA and USER");
          this.route.navigate(['info']);
         }
-      }
-    }
       else
       {
         this.valid=false;
